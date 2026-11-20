@@ -1,0 +1,142 @@
+{
+  "profile": {
+    "name": "Pablo Uribe Montoya",
+    "title": "Full-stack Software Engineer",
+    "location": "Medellín, Colombia",
+    "summary": "Full-stack Software Engineer with 7 years of professional experience in backend development using .NET/C#. Experience building microservices, RESTful/SOAP APIs, and IoT solutions on Azure and AWS. Comfortable applying architectural patterns, automated testing, and Agile methodologies. Multilingual professional with strong technical communication abilities."
+  },
+
+  "contact": {
+    "email": "pablo.um00@gmail.com",
+    "phone": "+57 310 473 5018",
+    "linkedin": "https://www.linkedin.com/in/pablo-um00/",
+    "github": "https://github.com/pabloum",
+    "instagram": "https://www.instagram.com/pablo_um/",
+    "x": "https://x.com/pablo_um"
+  },
+
+  "skills": [
+    { "category": "Languages", "items": ["C#", ".NET Core", "LINQ", "C++11", "Python", "JavaScript", "React", "Node.js"] },
+    { "category": "Backend & APIs", "items": ["REST APIs", "SOAP", "Microservices"] },
+    { "category": "Cloud & DevOps", "items": ["Azure", "Azure IoT Edge", "Azure Custom Vision", "AWS (Lambda, S3)", "Docker", "CI/CD"] },
+    { "category": "Databases", "items": ["SQL Server", "PostgreSQL", "MongoDB", "Redis"] },
+    { "category": "Architecture & Patterns", "items": ["CQRS", "Dependency Injection", "Repository Pattern", "Builder Pattern"] },
+    { "category": "Testing & QA", "items": ["XUnit", "NUnit", "MSTest", "TDD"] },
+    { "category": "IoT & Messaging", "items": ["MQTT", "Azure Service Bus", "Azure IoT Edge", "Azure Direct Methods"] },
+    { "category": "Tools", "items": ["Git", "GitHub", "Azure DevOps"] },
+    { "category": "AI-Assisted Development", "items": ["Claude", "Cursor", "GitHub Copilot", "Spec-Driven Development"] }
+  ],
+
+  "languages": [
+    { "name": "Spanish", "level": "Native", "score": 100 },
+    { "name": "English", "level": "C1", "score": 85 },
+    { "name": "French", "level": "C1", "score": 85 },
+    { "name": "German", "level": "B2", "score": 70 },
+    { "name": "Portuguese", "level": "B2", "score": 70 }
+  ],
+
+  "experience": [
+    {
+      "role": "Software Engineer",
+      "company": "EPAM Systems",
+      "location": "Medellín, Colombia",
+      "start": "2024",
+      "end": "Present",
+      "highlights": [
+        "Built RESTful APIs using .NET Core and C#",
+        "Processed and modeled data with SQL Server and LINQ",
+        "Applied Dependency Injection, Repository Pattern, and Builder Pattern",
+        "Maintained and supported SOAP and RESTful APIs in production",
+        "Supported legacy applications and worked on AI-assisted development with Claude Code and GitHub Copilot"
+      ],
+      "tech": ["C#", ".NET Core", "LINQ", "SQL Server", "Azure", "Git", "Claude Code", "GitHub Copilot"]
+    },
+    {
+      "role": "Semi-Senior .NET Software Engineer",
+      "company": "Globant",
+      "location": "Medellín, Colombia",
+      "start": "2020",
+      "end": "2024",
+      "highlights": [
+        "Built RESTful APIs and microservices under .NET Core, using Azure Service Bus for service-to-service communication",
+        "Web project: maintained tables and stored procedures in SQL Server; worked on the frontend with React",
+        "IoT project: built .NET 6.0 modules on Docker/Azure IoT Edge; used MQTT (Mosquitto) for communication; implemented Azure Direct Methods for remote camera control; built an image-processing module with Python and Azure Custom Vision",
+        "DataHub project: built AWS Lambda functions to process files from S3, storing data and routing it to multiple API endpoints",
+        "Applied the CQRS pattern and modern CI/CD tooling"
+      ],
+      "tech": ["C#", ".NET Core", "LINQ", "SQL Server", "AWS", "Docker", "Azure DevOps", "Git"]
+    },
+    {
+      "role": "Node.js Developer",
+      "company": "Freelance",
+      "location": "Medellín, Colombia",
+      "start": "2021",
+      "end": "2021",
+      "highlights": [
+        "Built a RESTful API using Node.js and Hapi.js",
+        "Managed the database using MongoDB"
+      ],
+      "tech": ["Node.js", "Hapi.js", "MongoDB", "Git"]
+    },
+    {
+      "role": "Junior Advanced C++ Developer",
+      "company": "Globant",
+      "location": "Medellín, Colombia",
+      "start": "2018",
+      "end": "2020",
+      "highlights": [
+        "Developed cross-platform Video-on-Demand (VOD) applications for major US media clients",
+        "Used C++11 and the Signal/Slot pattern for concurrent programming across Xbox, PS4, Roku, Fire TV, Apple TV, iOS, and Android"
+      ],
+      "tech": ["C++11", "OOP", "Multithreading"]
+    }
+  ],
+
+  "education": [
+    {
+      "institution": "Universidad Pontificia Bolivariana",
+      "location": "Medellín, Colombia",
+      "start": "2011",
+      "end": "2017",
+      "degrees": ["B.S. in Mechanical Engineering", "B.S. in Aeronautical Engineering"]
+    }
+  ],
+
+  "volunteer": [
+    {
+      "description": "Technical support volunteer for a .NET bootcamp organized by Women Who Code, Pioneras Dev, and Perficient",
+      "year": "2023"
+    }
+  ],
+
+  "portfolio": [
+    {
+      "title": "Claude Cert Prep",
+      "description": "Exam preparation web app for the Claude certification.",
+      "tech": ["Web App", "Vercel"],
+      "url": "https://exam-demo-boris-montania.vercel.app/",
+      "repo": ""
+    },
+    {
+      "title": "IoT Platform for HM Electronics",
+      "description": ".NET 6.0 modules on Azure IoT Edge with MQTT messaging and remote camera control.",
+      "tech": [".NET Core", "NUnit", "MQTT", "Azure"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "DataHub",
+      "description": "AWS Lambda functions that read files from S3, apply business rules, store the data and push it to other applications' endpoints.",
+      "tech": [".NET Core", "MSTest", "SQL Server", "AWS Lambda", "Amazon S3"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "NFL TV App",
+      "description": "Multiplatform streaming app for live games, replays and video on demand on Xbox, PS4, Roku, Fire TV, Apple TV, iOS and Android.",
+      "tech": ["C++11", "Objective-C", "Java", "You.i Engine One"],
+      "url": "",
+      "repo": ""
+    }
+  ]
+}
