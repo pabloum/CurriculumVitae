@@ -76,6 +76,9 @@ export default function App() {
   };
 
   const initials = cv.profile.name.split(' ').slice(0, 2).map((w) => w[0]).join('');
+  // Falls back to the initials if there is no photo or it fails to load
+  const [photoFailed, setPhotoFailed] = useState(false);
+  const showPhoto = Boolean(cv.profile.photo) && !photoFailed;
 
   return (
     <>
@@ -88,7 +91,11 @@ export default function App() {
             </button>
           </div>
           <div className="hero__main">
-            <div className="avatar" aria-hidden="true">{initials}</div>
+            <div className="avatar" aria-hidden={!showPhoto}>
+            {showPhoto
+              ? <img src={cv.profile.photo} alt={cv.profile.name} onError={() => setPhotoFailed(true)} />
+              : initials}
+          </div>
             <div>
               <h1 className="hero__name">{cv.profile.name}</h1>
               <p className="hero__title">{cv.profile.title}</p>

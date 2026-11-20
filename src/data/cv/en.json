@@ -1,6 +1,7 @@
 {
   "profile": {
     "name": "Pablo Uribe Montoya",
+    "photo": "/profile.jpg",
     "title": "Full-stack Software Engineer · MSc (c) in Artificial Intelligence",
     "location": "Medellín, Colombia",
     "summary": "Full-stack Software Engineer with 8 years of professional experience in backend development using .NET/C#. Experience building microservices, RESTful/SOAP APIs, and IoT solutions on Azure and AWS. Comfortable applying architectural patterns, automated testing, and Agile methodologies. Multilingual professional with strong technical communication abilities."

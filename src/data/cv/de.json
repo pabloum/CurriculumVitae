@@ -1,6 +1,7 @@
 {
   "profile": {
     "name": "Pablo Uribe Montoya",
+    "photo": "/profile.jpg",
     "title": "Full-Stack-Softwareentwickler · MSc (c) in Künstlicher Intelligenz",
     "location": "Medellín, Kolumbien",
     "summary": "Full-Stack-Softwareentwickler mit 8 Jahren Berufserfahrung in der Backend-Entwicklung mit .NET/C#. Erfahrung in der Entwicklung von Microservices, RESTful-/SOAP-APIs und IoT-Lösungen auf Azure und AWS. Sicher im Einsatz von Architekturmustern, automatisierten Tests und agilen Methoden. Mehrsprachig, mit ausgeprägten Fähigkeiten in der technischen Kommunikation."
