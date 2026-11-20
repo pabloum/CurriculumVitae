@@ -1,9 +1,9 @@
 {
   "profile": {
     "name": "Pablo Uribe Montoya",
-    "title": "Full-stack Software Engineer",
+    "title": "Full-stack Software Engineer · MSc (c) in Artificial Intelligence",
     "location": "Medellín, Colombia",
-    "summary": "Full-stack Software Engineer with 7 years of professional experience in backend development using .NET/C#. Experience building microservices, RESTful/SOAP APIs, and IoT solutions on Azure and AWS. Comfortable applying architectural patterns, automated testing, and Agile methodologies. Multilingual professional with strong technical communication abilities."
+    "summary": "Full-stack Software Engineer with 8 years of professional experience in backend development using .NET/C#. Experience building microservices, RESTful/SOAP APIs, and IoT solutions on Azure and AWS. Comfortable applying architectural patterns, automated testing, and Agile methodologies. Multilingual professional with strong technical communication abilities."
   },
 
   "contact": {
@@ -38,10 +38,25 @@
   "experience": [
     {
       "role": "Software Engineer",
+      "company": "TEAM International",
+      "client": "Arrive Logistics",
+      "location": "Medellín, Colombia",
+      "start": "2026",
+      "end": "Present",
+      "highlights": [
+        "Building features with AI-assisted development, using Claude and AI agents in the day-to-day workflow",
+        "Developing real-time communication with SignalR and WebSockets",
+        "Integrating services through Azure Service Bus messaging",
+        "Building and maintaining RESTful APIs backed by SQL Server"
+      ],
+      "tech": ["SignalR", "WebSockets", "Azure Service Bus", "REST APIs", "SQL Server", "Claude", "AI Agents"]
+    },
+    {
+      "role": "Software Engineer",
       "company": "EPAM Systems",
       "location": "Medellín, Colombia",
       "start": "2024",
-      "end": "Present",
+      "end": "2026",
       "highlights": [
         "Built RESTful APIs using .NET Core and C#",
         "Processed and modeled data with SQL Server and LINQ",
@@ -93,6 +108,13 @@
   ],
 
   "education": [
+    {
+      "institution": "Universidad de los Andes",
+      "location": "Bogotá, Colombia",
+      "start": "",
+      "end": "In progress",
+      "degrees": ["Master in Artificial Intelligence (candidate)"]
+    },
     {
       "institution": "Universidad Pontificia Bolivariana",
       "location": "Medellín, Colombia",

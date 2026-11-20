@@ -145,7 +145,14 @@ export async function generateCvPdf(cv) {
     const roleW = doc.getTextWidth(job.role);
     doc.setFont('helvetica', 'normal');
     setColor(COLORS.accent2);
-    doc.text(` · ${job.company}`, PAGE.margin + roleW, y + 4);
+    const company = ` · ${job.company}`;
+    doc.text(company, PAGE.margin + roleW, y + 4);
+    if (job.client) {
+      const companyW = doc.getTextWidth(company);
+      setColor(COLORS.muted);
+      doc.setFontSize(9.5);
+      doc.text(` · Client: ${job.client}`, PAGE.margin + roleW + companyW, y + 4);
+    }
     const dates = job.start === job.end ? job.start : `${job.start} – ${job.end}`;
     setColor(COLORS.muted);
     doc.setFontSize(9);
@@ -160,7 +167,8 @@ export async function generateCvPdf(cv) {
 
   // ---- Education
   sectionTitle('Education');
-  cv.education.forEach((e) => {
+  cv.education.forEach((e, i) => {
+    if (i > 0) y += 2.5;
     ensureSpace(14);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10.5);
@@ -169,7 +177,7 @@ export async function generateCvPdf(cv) {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
     setColor(COLORS.muted);
-    doc.text(`${e.start} – ${e.end}`, PAGE.w - PAGE.margin, y + 4, { align: 'right' });
+    doc.text([e.start, e.end].filter(Boolean).join(' – '), PAGE.w - PAGE.margin, y + 4, { align: 'right' });
     y += 5.5;
     paragraph(e.location, { size: 8.5, style: 'italic', color: COLORS.muted, gap: 1 });
     e.degrees.forEach((d) => bullet(d));

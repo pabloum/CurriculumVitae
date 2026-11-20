@@ -1,5 +1,7 @@
 import { ExternalIcon, GitHubIcon, PinIcon } from './Icons.jsx';
 
+const dateRange = (start, end) => [start, end].filter(Boolean).join(' – ');
+
 const Tags = ({ items }) => (
   <ul className="tags">
     {items.map((t) => <li key={t} className="tag">{t}</li>)}
@@ -35,6 +37,7 @@ export function Experience({ jobs }) {
           <div className="timeline__body">
             <h3 className="job__title">
               {job.role} <span className="job__company">· {job.company}</span>
+              {job.client && <span className="job__client"> · Client: {job.client}</span>}
             </h3>
             <p className="meta"><PinIcon /> {job.location}</p>
             <ul className="bullets">
@@ -70,7 +73,7 @@ export function Education({ education, volunteer }) {
       {education.map((e) => (
         <div key={e.institution} className="edu__item">
           <h3 className="job__title">{e.institution}</h3>
-          <p className="meta"><PinIcon /> {e.location} · {e.start} – {e.end}</p>
+          <p className="meta"><PinIcon /> {e.location} · {dateRange(e.start, e.end)}</p>
           <ul className="bullets">
             {e.degrees.map((d) => <li key={d}>{d}</li>)}
           </ul>
