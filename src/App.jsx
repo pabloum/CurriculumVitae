@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import AccordionSection from './components/Accordion.jsx';
-import Contact from './components/Contact.jsx';
+import { ContactBar, ContactIcons } from './components/Contact.jsx';
 import { Education, Experience, Languages, Portfolio, Skills, Summary } from './components/Sections.jsx';
 import { DownloadIcon, MoonIcon, PinIcon, SunIcon } from './components/Icons.jsx';
 import { generateCvPdf } from './pdf/generateCvPdf.js';
@@ -14,7 +14,6 @@ const SECTIONS = [
   { id: 'portfolio', icon: '▣', render: (cv) => <Portfolio projects={cv.portfolio} /> },
   { id: 'languages', icon: '◎', render: (cv) => <Languages languages={cv.languages} /> },
   { id: 'education', icon: '◇', render: (cv) => <Education education={cv.education} volunteer={cv.volunteer} /> },
-  { id: 'contact', icon: '✉', render: (cv) => <Contact contact={cv.contact} /> },
 ];
 
 function LanguagePicker() {
@@ -79,50 +78,56 @@ export default function App() {
   const initials = cv.profile.name.split(' ').slice(0, 2).map((w) => w[0]).join('');
 
   return (
-    <div className="page">
-      <header className="hero">
-        <div className="hero__top">
-          <LanguagePicker />
-          <button className="icon-btn" onClick={toggleTheme} aria-label={theme === 'dark' ? t.toLight : t.toDark} title={t.toggleTheme}>
-            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-          </button>
-        </div>
-        <div className="hero__main">
-          <div className="avatar" aria-hidden="true">{initials}</div>
-          <div>
-            <h1 className="hero__name">{cv.profile.name}</h1>
-            <p className="hero__title">{cv.profile.title}</p>
-            <p className="meta"><PinIcon /> {cv.profile.location}</p>
+    <>
+      <div className="page">
+        <header className="hero">
+          <div className="hero__top">
+            <LanguagePicker />
+            <button className="icon-btn" onClick={toggleTheme} aria-label={theme === 'dark' ? t.toLight : t.toDark} title={t.toggleTheme}>
+              {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+            </button>
           </div>
-        </div>
-        <div className="hero__actions">
-          <button className="btn btn--primary" onClick={downloadPdf} disabled={generating}>
-            <DownloadIcon /> {generating ? t.generating : t.downloadPdf}
-          </button>
-          <button className="btn btn--ghost" onClick={() => jumpTo('contact')}>{t.getInTouch}</button>
-        </div>
-      </header>
+          <div className="hero__main">
+            <div className="avatar" aria-hidden="true">{initials}</div>
+            <div>
+              <h1 className="hero__name">{cv.profile.name}</h1>
+              <p className="hero__title">{cv.profile.title}</p>
+              <p className="meta"><PinIcon /> {cv.profile.location}</p>
+            </div>
+          </div>
+          <div className="hero__actions">
+            <button className="btn btn--primary" onClick={downloadPdf} disabled={generating}>
+              <DownloadIcon /> {generating ? t.generating : t.downloadPdf}
+            </button>
+            <ContactIcons />
+          </div>
+        </header>
 
-      <nav className="toc" aria-label={t.sections.summary[0]}>
-        {SECTIONS.map((s) => (
-          <button key={s.id} className={`chip ${open.has(s.id) ? 'chip--active' : ''}`} onClick={() => jumpTo(s.id)}>
-            {t.sections[s.id][0]}
-          </button>
-        ))}
-        <button className="chip chip--plain" onClick={toggleAll}>{allOpen ? t.collapseAll : t.expandAll}</button>
-      </nav>
+        <nav className="toc" aria-label={t.sections.summary[0]}>
+          {SECTIONS.map((s) => (
+            <button key={s.id} className={`chip ${open.has(s.id) ? 'chip--active' : ''}`} onClick={() => jumpTo(s.id)}>
+              {t.sections[s.id][0]}
+            </button>
+          ))}
+          <button className="chip chip--plain" onClick={toggleAll}>{allOpen ? t.collapseAll : t.expandAll}</button>
+        </nav>
 
-      <main className="sections">
-        {SECTIONS.map((s) => (
-          <AccordionSection key={s.id} id={s.id} title={t.sections[s.id][1]} icon={s.icon} open={open.has(s.id)} onToggle={() => toggle(s.id)}>
-            {s.render(cv)}
-          </AccordionSection>
-        ))}
-      </main>
+        <main className="sections">
+          {SECTIONS.map((s) => (
+            <AccordionSection key={s.id} id={s.id} title={t.sections[s.id][1]} icon={s.icon} open={open.has(s.id)} onToggle={() => toggle(s.id)}>
+              {s.render(cv)}
+            </AccordionSection>
+          ))}
+        </main>
 
-      <footer className="footer">
-        © {new Date().getFullYear()} {cv.profile.name}
+        <footer className="footer">
+          © {new Date().getFullYear()} {cv.profile.name}
+        </footer>
+      </div>
+
+      <footer className="site-footer">
+        <ContactBar />
       </footer>
-    </div>
+    </>
   );
 }

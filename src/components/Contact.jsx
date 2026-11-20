@@ -4,8 +4,10 @@ import { GitHubIcon, InstagramIcon, LinkedInIcon, MailIcon, PhoneIcon, XIcon } f
 
 const handleFromUrl = (url) => url.replace(/\/+$/, '').split('/').pop();
 
-export default function Contact({ contact }) {
-  const { t } = useI18n();
+// Contact options + click handler shared by the header icons and the bottom bar
+function useContactItems() {
+  const { cv, t } = useI18n();
+  const { contact } = cv;
   const [copied, setCopied] = useState('');
 
   const items = [
@@ -17,7 +19,7 @@ export default function Contact({ contact }) {
     { key: 'x', label: 'X', value: `@${handleFromUrl(contact.x)}`, href: contact.x, icon: <XIcon /> },
   ];
 
-  const copy = async (item) => {
+  const onClick = async (item) => {
     if (!item.copy || !navigator.clipboard) return;
     // Let mailto/tel open normally, but also copy so it works on desktop without a handler
     try {
@@ -27,24 +29,53 @@ export default function Contact({ contact }) {
     } catch { /* clipboard blocked – link still works */ }
   };
 
+  const linkProps = (item) => ({
+    href: item.href,
+    target: item.copy ? undefined : '_blank',
+    rel: 'noreferrer',
+    onClick: () => onClick(item),
+  });
+
+  return { items, copied, linkProps, t };
+}
+
+// Icon-only round buttons, used in the header
+export function ContactIcons() {
+  const { items, copied, linkProps, t } = useContactItems();
   return (
-    <div className="contact">
-      {items.map((item) => (
-        <a
-          key={item.key}
-          className={`contact__btn contact__btn--${item.key}`}
-          href={item.href}
-          target={item.copy ? undefined : '_blank'}
-          rel="noreferrer"
-          onClick={() => copy(item)}
-        >
-          <span className="contact__icon">{item.icon}</span>
-          <span className="contact__text">
-            <span className="contact__label">{copied === item.key ? t.copied : item.label}</span>
-            <span className="contact__value">{item.value}</span>
-          </span>
-        </a>
-      ))}
-    </div>
+    <ul className="contact-icons" aria-label={t.contactMe}>
+      {items.map((item) => {
+        const tip = copied === item.key ? t.copied : `${item.label}: ${item.value}`;
+        return (
+          <li key={item.key}>
+            <a className="contact-icon" aria-label={tip} title={tip} {...linkProps(item)}>
+              {item.icon}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+// Contact bar shown at the end of the page
+export function ContactBar() {
+  const { items, copied, linkProps, t } = useContactItems();
+  return (
+    <aside className="contact-bar" aria-label={t.contactMe}>
+      <div className="contact-bar__inner">
+        <span className="contact-bar__title">{t.contactMe}</span>
+        <ul className="contact-bar__list">
+          {items.map((item) => (
+            <li key={item.key}>
+              <a className="contact-bar__btn" title={`${item.label}: ${item.value}`} {...linkProps(item)}>
+                <span className="contact-bar__icon">{item.icon}</span>
+                <span className="contact-bar__value">{copied === item.key ? t.copied : item.value}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </aside>
   );
 }
