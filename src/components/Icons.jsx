@@ -35,9 +35,6 @@ export const GitHubIcon = () => (
 export const InstagramIcon = () => (
   <svg {...stroke}><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg>
 );
-export const XIcon = () => (
-  <svg {...base} fill="currentColor"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z" /></svg>
-);
 
 // Skill category icons
 export const CodeIcon = () => (

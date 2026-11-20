@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useI18n } from '../i18n/I18nContext.jsx';
-import { GitHubIcon, InstagramIcon, LinkedInIcon, MailIcon, PhoneIcon, XIcon } from './Icons.jsx';
+import { GitHubIcon, InstagramIcon, LinkedInIcon, MailIcon, PhoneIcon } from './Icons.jsx';
 
 const handleFromUrl = (url) => url.replace(/\/+$/, '').split('/').pop();
 
@@ -16,7 +16,6 @@ function useContactItems() {
     { key: 'linkedin', label: 'LinkedIn', value: handleFromUrl(contact.linkedin), href: contact.linkedin, icon: <LinkedInIcon /> },
     { key: 'github', label: 'GitHub', value: `@${handleFromUrl(contact.github)}`, href: contact.github, icon: <GitHubIcon /> },
     { key: 'instagram', label: 'Instagram', value: `@${handleFromUrl(contact.instagram)}`, href: contact.instagram, icon: <InstagramIcon /> },
-    { key: 'x', label: 'X', value: `@${handleFromUrl(contact.x)}`, href: contact.x, icon: <XIcon /> },
   ];
 
   const onClick = async (item) => {
