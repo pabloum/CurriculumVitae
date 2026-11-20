@@ -1,0 +1,271 @@
+{
+  "profile": {
+    "name": "Pablo Uribe Montoya",
+    "title": "Ingeniero de Software Full-stack · MSc (c) en Inteligencia Artificial",
+    "location": "Medellín, Colombia",
+    "summary": "Ingeniero de Software Full-stack con 8 años de experiencia profesional en desarrollo backend con .NET/C#. Experiencia construyendo microservicios, APIs RESTful/SOAP y soluciones IoT en Azure y AWS. Habituado a aplicar patrones de arquitectura, pruebas automatizadas y metodologías ágiles. Profesional multilingüe con sólidas habilidades de comunicación técnica."
+  },
+  "contact": {
+    "email": "pablo.um00@gmail.com",
+    "phone": "+57 310 473 5018",
+    "linkedin": "https://www.linkedin.com/in/pablo-um00/",
+    "github": "https://github.com/pabloum",
+    "instagram": "https://www.instagram.com/pablo_um/",
+    "x": "https://x.com/pablo_um"
+  },
+  "skills": [
+    {
+      "category": "Lenguajes",
+      "icon": "code",
+      "items": ["C#", ".NET Core", "LINQ", "C++11", "Python", "JavaScript", "React", "Node.js"]
+    },
+    {
+      "category": "Backend y APIs",
+      "icon": "server",
+      "items": ["APIs REST", "SOAP", "Microservicios"]
+    },
+    {
+      "category": "Cloud y DevOps",
+      "icon": "cloud",
+      "items": ["Azure", "Azure IoT Edge", "Azure Custom Vision", "AWS (Lambda, S3)", "Docker", "CI/CD"]
+    },
+    {
+      "category": "Bases de datos",
+      "icon": "database",
+      "items": ["SQL Server", "PostgreSQL", "MongoDB", "Redis"]
+    },
+    {
+      "category": "Arquitectura y patrones",
+      "icon": "layers",
+      "items": ["CQRS", "Inyección de dependencias", "Patrón Repository", "Patrón Builder"]
+    },
+    {
+      "category": "Pruebas y QA",
+      "icon": "check",
+      "items": ["XUnit", "NUnit", "MSTest", "TDD"]
+    },
+    {
+      "category": "IoT y mensajería",
+      "icon": "signal",
+      "items": ["MQTT", "Azure Service Bus", "Azure IoT Edge", "Azure Direct Methods"]
+    },
+    {
+      "category": "Herramientas",
+      "icon": "tool",
+      "items": ["Git", "GitHub", "Azure DevOps"]
+    },
+    {
+      "category": "Desarrollo asistido por IA",
+      "icon": "spark",
+      "items": ["Claude", "Cursor", "GitHub Copilot", "Desarrollo guiado por especificaciones"]
+    }
+  ],
+  "languages": [
+    {
+      "name": "Español",
+      "level": "Nativo",
+      "score": 100
+    },
+    {
+      "name": "Inglés",
+      "level": "C1",
+      "score": 85
+    },
+    {
+      "name": "Francés",
+      "level": "C1",
+      "score": 85
+    },
+    {
+      "name": "Alemán",
+      "level": "B2",
+      "score": 70
+    },
+    {
+      "name": "Portugués",
+      "level": "B2",
+      "score": 70
+    }
+  ],
+  "experience": [
+    {
+      "role": "Ingeniero de Software",
+      "company": "TEAM International",
+      "client": "Arrive Logistics",
+      "location": "Medellín, Colombia",
+      "start": "2026",
+      "end": "Actualidad",
+      "highlights": [
+        "Desarrollo de funcionalidades asistido por IA, usando Claude y agentes de IA en el flujo de trabajo diario",
+        "Desarrollo de comunicación en tiempo real con SignalR y WebSockets",
+        "Integración de servicios mediante mensajería con Azure Service Bus",
+        "Construcción y mantenimiento de APIs RESTful respaldadas por SQL Server"
+      ],
+      "tech": ["SignalR", "WebSockets", "Azure Service Bus", "APIs REST", "SQL Server", "Claude", "Agentes de IA"]
+    },
+    {
+      "role": "Ingeniero de Software",
+      "company": "EPAM Systems",
+      "location": "Medellín, Colombia",
+      "start": "2024",
+      "end": "2026",
+      "highlights": [
+        "Construcción de APIs RESTful con .NET Core y C#",
+        "Procesamiento y modelado de datos con SQL Server y LINQ",
+        "Aplicación de inyección de dependencias y de los patrones Repository y Builder",
+        "Mantenimiento y soporte de APIs SOAP y RESTful en producción",
+        "Soporte a aplicaciones legacy y desarrollo asistido por IA con Claude Code y GitHub Copilot"
+      ],
+      "tech": ["C#", ".NET Core", "LINQ", "SQL Server", "Azure", "Git", "Claude Code", "GitHub Copilot"]
+    },
+    {
+      "company": "Globant",
+      "location": "Medellín, Colombia",
+      "start": "2018",
+      "end": "2024",
+      "positions": [
+        {
+          "role": "Ingeniero de Software .NET Semi-Senior",
+          "start": "2020",
+          "end": "2024",
+          "highlights": [
+            "Construcción de APIs RESTful y microservicios en .NET Core, usando Azure Service Bus para la comunicación entre servicios",
+            "Proyecto web: mantenimiento de tablas y procedimientos almacenados en SQL Server; desarrollo del frontend con React",
+            "Proyecto IoT: desarrollo de módulos en .NET 6.0 sobre Docker/Azure IoT Edge; comunicación mediante MQTT (Mosquitto); implementación de Azure Direct Methods para el control remoto de cámaras; desarrollo de un módulo de procesamiento de imágenes con Python y Azure Custom Vision",
+            "Proyecto DataHub: desarrollo de funciones AWS Lambda para procesar archivos desde S3, almacenando los datos y enviándolos a múltiples endpoints de API",
+            "Aplicación del patrón CQRS y de herramientas modernas de CI/CD"
+          ],
+          "tech": ["C#", ".NET Core", "LINQ", "SQL Server", "AWS", "Docker", "Azure DevOps", "Git"]
+        },
+        {
+          "role": "Desarrollador C++ Junior Avanzado",
+          "start": "2018",
+          "end": "2020",
+          "highlights": [
+            "Desarrollo de aplicaciones multiplataforma de video bajo demanda (VOD) para importantes clientes de medios de EE. UU.",
+            "Uso de C++11 y el patrón Signal/Slot para programación concurrente en Xbox, PS4, Roku, Fire TV, Apple TV, iOS y Android"
+          ],
+          "tech": ["C++11", "POO", "Multithreading"]
+        }
+      ]
+    },
+    {
+      "role": "Desarrollador Node.js",
+      "company": "Independiente",
+      "location": "Medellín, Colombia",
+      "start": "2021",
+      "end": "2021",
+      "highlights": ["Construcción de una API RESTful con Node.js y Hapi.js", "Gestión de la base de datos con MongoDB"],
+      "tech": ["Node.js", "Hapi.js", "MongoDB", "Git"]
+    },
+    {
+      "role": "Practicante",
+      "company": "Renault-Sofasa",
+      "location": "Envigado, Colombia",
+      "start": "2017",
+      "end": "2017",
+      "highlights": ["Comunicación en francés en un entorno laboral profesional", "Automatización de hojas de cálculo en Excel"],
+      "tech": ["Excel", "Francés"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad de los Andes",
+      "location": "Bogotá, Colombia",
+      "start": "",
+      "end": "En curso",
+      "degrees": ["Maestría en Inteligencia Artificial (candidato)"]
+    },
+    {
+      "institution": "Universidad Pontificia Bolivariana",
+      "location": "Medellín, Colombia",
+      "start": "2011",
+      "end": "2017",
+      "degrees": ["Ingeniería Mecánica", "Ingeniería Aeronáutica"]
+    }
+  ],
+  "volunteer": [
+    {
+      "description": "Voluntario de soporte técnico en un bootcamp de .NET organizado por Women Who Code, Pioneras Dev y Perficient",
+      "year": "2023"
+    }
+  ],
+  "portfolio": [
+    {
+      "title": "Plataforma de cotización de reconstrucción de edificaciones",
+      "client": "CoreLogic / Cotality",
+      "description": "Aplicación que calcula el costo de reconstrucción de edificaciones según sus características y materiales. Soporte tanto a la versión legacy en .NET Framework 4.8 como a la versión más reciente en .NET 8, con frontend en React.",
+      "highlights": [
+        "Implementación de inicio de sesión con autenticación multifactor (MFA)",
+        "Actualización de los precios de materiales en la base de datos mediante la ejecución de scripts",
+        "Incorporación de lógica al servicio que almacena las reglas de negocio",
+        "Soporte de APIs SOAP y REST"
+      ],
+      "tech": ["React", ".NET 8", ".NET Framework 4.8", "SOAP", "APIs REST", "MFA"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "Plataforma de microservicios para crucero",
+      "description": "Arquitectura de microservicios detrás de las apps y servicios disponibles para los pasajeros a bordo de un crucero: eventos nocturnos, menús, horarios de comida, casinos y más.",
+      "highlights": [
+        "Parte del equipo del casino, desarrollando y manteniendo sus servicios",
+        "Los servicios del barco se interconectaban mediante mensajería asíncrona"
+      ],
+      "tech": ["Microservicios", "Mensajería asíncrona"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "Claude Cert Prep",
+      "description": "Aplicación web de preparación para el examen de certificación de Claude.",
+      "tech": ["Aplicación web", "Vercel"],
+      "url": "https://exam-demo-boris-montania.vercel.app/",
+      "repo": ""
+    },
+    {
+      "title": "Plataforma IoT Edge",
+      "client": "HM Electronics",
+      "description": "Módulos en .NET 6.0 sobre Azure IoT Edge con mensajería MQTT y control remoto de cámaras.",
+      "tech": [".NET Core", "NUnit", "MQTT", "Azure"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "DataHub",
+      "description": "Funciones AWS Lambda que leen archivos de S3, aplican reglas de negocio, almacenan los datos y los envían a endpoints de otras aplicaciones.",
+      "tech": [".NET Core", "MSTest", "SQL Server", "AWS Lambda", "Amazon S3"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "App de TV multiplataforma de streaming",
+      "client": "NFL",
+      "description": "App de streaming multiplataforma para partidos en vivo, repeticiones y video bajo demanda en Xbox, PS4, Roku, Fire TV, Apple TV, iOS y Android.",
+      "tech": ["C++11", "Objective-C", "Java", "You.i Engine One"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "API RESTful y capa de datos",
+      "description": "Desarrollo y soporte de un servicio backend RESTful en .NET, creando y manteniendo las tablas y procedimientos almacenados de SQL Server que lo respaldan.",
+      "tech": [".NET Core", "C#", "SQL Server", "Procedimientos almacenados"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "Desarrollo y soporte de API RESTful",
+      "description": "Desarrollo de nuevos endpoints y soporte en producción de un servicio backend RESTful en .NET con SQL Server.",
+      "tech": [".NET Core", "C#", "SQL Server", "APIs REST"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "API de reservas hoteleras",
+      "description": "Servicio backend RESTful para reservas de hotel, construido con Node.js y Hapi.js sobre MongoDB.",
+      "tech": ["Node.js", "Hapi.js", "MongoDB"],
+      "url": "",
+      "repo": ""
+    }
+  ]
+}

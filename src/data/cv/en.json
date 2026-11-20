@@ -5,7 +5,6 @@
     "location": "Medellín, Colombia",
     "summary": "Full-stack Software Engineer with 8 years of professional experience in backend development using .NET/C#. Experience building microservices, RESTful/SOAP APIs, and IoT solutions on Azure and AWS. Comfortable applying architectural patterns, automated testing, and Agile methodologies. Multilingual professional with strong technical communication abilities."
   },
-
   "contact": {
     "email": "pablo.um00@gmail.com",
     "phone": "+57 310 473 5018",
@@ -14,27 +13,80 @@
     "instagram": "https://www.instagram.com/pablo_um/",
     "x": "https://x.com/pablo_um"
   },
-
   "skills": [
-    { "category": "Languages", "items": ["C#", ".NET Core", "LINQ", "C++11", "Python", "JavaScript", "React", "Node.js"] },
-    { "category": "Backend & APIs", "items": ["REST APIs", "SOAP", "Microservices"] },
-    { "category": "Cloud & DevOps", "items": ["Azure", "Azure IoT Edge", "Azure Custom Vision", "AWS (Lambda, S3)", "Docker", "CI/CD"] },
-    { "category": "Databases", "items": ["SQL Server", "PostgreSQL", "MongoDB", "Redis"] },
-    { "category": "Architecture & Patterns", "items": ["CQRS", "Dependency Injection", "Repository Pattern", "Builder Pattern"] },
-    { "category": "Testing & QA", "items": ["XUnit", "NUnit", "MSTest", "TDD"] },
-    { "category": "IoT & Messaging", "items": ["MQTT", "Azure Service Bus", "Azure IoT Edge", "Azure Direct Methods"] },
-    { "category": "Tools", "items": ["Git", "GitHub", "Azure DevOps"] },
-    { "category": "AI-Assisted Development", "items": ["Claude", "Cursor", "GitHub Copilot", "Spec-Driven Development"] }
+    {
+      "category": "Languages",
+      "icon": "code",
+      "items": ["C#", ".NET Core", "LINQ", "C++11", "Python", "JavaScript", "React", "Node.js"]
+    },
+    {
+      "category": "Backend & APIs",
+      "icon": "server",
+      "items": ["REST APIs", "SOAP", "Microservices"]
+    },
+    {
+      "category": "Cloud & DevOps",
+      "icon": "cloud",
+      "items": ["Azure", "Azure IoT Edge", "Azure Custom Vision", "AWS (Lambda, S3)", "Docker", "CI/CD"]
+    },
+    {
+      "category": "Databases",
+      "icon": "database",
+      "items": ["SQL Server", "PostgreSQL", "MongoDB", "Redis"]
+    },
+    {
+      "category": "Architecture & Patterns",
+      "icon": "layers",
+      "items": ["CQRS", "Dependency Injection", "Repository Pattern", "Builder Pattern"]
+    },
+    {
+      "category": "Testing & QA",
+      "icon": "check",
+      "items": ["XUnit", "NUnit", "MSTest", "TDD"]
+    },
+    {
+      "category": "IoT & Messaging",
+      "icon": "signal",
+      "items": ["MQTT", "Azure Service Bus", "Azure IoT Edge", "Azure Direct Methods"]
+    },
+    {
+      "category": "Tools",
+      "icon": "tool",
+      "items": ["Git", "GitHub", "Azure DevOps"]
+    },
+    {
+      "category": "AI-Assisted Development",
+      "icon": "spark",
+      "items": ["Claude", "Cursor", "GitHub Copilot", "Spec-Driven Development"]
+    }
   ],
-
   "languages": [
-    { "name": "Spanish", "level": "Native", "score": 100 },
-    { "name": "English", "level": "C1", "score": 85 },
-    { "name": "French", "level": "C1", "score": 85 },
-    { "name": "German", "level": "B2", "score": 70 },
-    { "name": "Portuguese", "level": "B2", "score": 70 }
+    {
+      "name": "Spanish",
+      "level": "Native",
+      "score": 100
+    },
+    {
+      "name": "English",
+      "level": "C1",
+      "score": 85
+    },
+    {
+      "name": "French",
+      "level": "C1",
+      "score": 85
+    },
+    {
+      "name": "German",
+      "level": "B2",
+      "score": 70
+    },
+    {
+      "name": "Portuguese",
+      "level": "B2",
+      "score": 70
+    }
   ],
-
   "experience": [
     {
       "role": "Software Engineer",
@@ -103,10 +155,7 @@
       "location": "Medellín, Colombia",
       "start": "2021",
       "end": "2021",
-      "highlights": [
-        "Built a RESTful API using Node.js and Hapi.js",
-        "Managed the database using MongoDB"
-      ],
+      "highlights": ["Built a RESTful API using Node.js and Hapi.js", "Managed the database using MongoDB"],
       "tech": ["Node.js", "Hapi.js", "MongoDB", "Git"]
     },
     {
@@ -115,14 +164,10 @@
       "location": "Envigado, Colombia",
       "start": "2017",
       "end": "2017",
-      "highlights": [
-        "Communicated in French in a professional work environment",
-        "Automated spreadsheets in Excel"
-      ],
+      "highlights": ["Communicated in French in a professional work environment", "Automated spreadsheets in Excel"],
       "tech": ["Excel", "French"]
     }
   ],
-
   "education": [
     {
       "institution": "Universidad de los Andes",
@@ -139,14 +184,12 @@
       "degrees": ["B.S. in Mechanical Engineering", "B.S. in Aeronautical Engineering"]
     }
   ],
-
   "volunteer": [
     {
       "description": "Technical support volunteer for a .NET bootcamp organized by Women Who Code, Pioneras Dev, and Perficient",
       "year": "2023"
     }
   ],
-
   "portfolio": [
     {
       "title": "Building Reconstruction Pricing Platform",

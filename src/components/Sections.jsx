@@ -2,6 +2,7 @@ import {
   CheckIcon, CloudIcon, CodeIcon, DatabaseIcon, ExternalIcon, GitHubIcon, LayersIcon,
   PinIcon, ServerIcon, SignalIcon, SparkIcon, ToolIcon,
 } from './Icons.jsx';
+import { useI18n } from '../i18n/I18nContext.jsx';
 
 const dateRange = (start, end) => [start, end].filter(Boolean).join(' – ');
 
@@ -15,25 +16,24 @@ export function Summary({ text }) {
   return <p className="summary">{text}</p>;
 }
 
-// Icon per skill category (matched by keyword so renamed categories still get one)
-const SKILL_ICONS = [
-  [/language/i, CodeIcon],
-  [/backend|api/i, ServerIcon],
-  [/cloud|devops/i, CloudIcon],
-  [/database|data/i, DatabaseIcon],
-  [/architecture|pattern/i, LayersIcon],
-  [/test|qa/i, CheckIcon],
-  [/iot|messaging/i, SignalIcon],
-  [/\bai\b|ai-/i, SparkIcon],
-  [/tool/i, ToolIcon],
-];
-const skillIcon = (category) => (SKILL_ICONS.find(([re]) => re.test(category))?.[1] ?? CodeIcon);
+// Icon per skill category, chosen by the "icon" key in the CV data
+const SKILL_ICONS = {
+  code: CodeIcon,
+  server: ServerIcon,
+  cloud: CloudIcon,
+  database: DatabaseIcon,
+  layers: LayersIcon,
+  check: CheckIcon,
+  signal: SignalIcon,
+  tool: ToolIcon,
+  spark: SparkIcon,
+};
 
 export function Skills({ skills }) {
   return (
     <ul className="skills">
       {skills.map((group, i) => {
-        const Icon = skillIcon(group.category);
+        const Icon = SKILL_ICONS[group.icon] ?? CodeIcon;
         return (
           <li key={group.category} className={`skills__row ${i % 2 ? 'skills__row--blue' : ''}`}>
             <div className="skills__head">
@@ -62,6 +62,7 @@ function Highlights({ position }) {
 }
 
 export function Experience({ jobs }) {
+  const { t } = useI18n();
   return (
     <ol className="timeline">
       {jobs.map((job) => (
@@ -92,7 +93,7 @@ export function Experience({ jobs }) {
               <div className="position">
                 <h3 className="job__title">
                   {job.role} <span className="job__company">· {job.company}</span>
-                  {job.client && <span className="job__client"> · Client: {job.client}</span>}
+                  {job.client && <span className="job__client"> · {t.client}: {job.client}</span>}
                 </h3>
                 <p className="meta"><PinIcon /> {job.location}</p>
                 <Highlights position={job} />
@@ -122,6 +123,7 @@ export function Languages({ languages }) {
 }
 
 export function Education({ education, volunteer }) {
+  const { t } = useI18n();
   return (
     <div className="edu">
       {education.map((e) => (
@@ -135,7 +137,7 @@ export function Education({ education, volunteer }) {
       ))}
       {volunteer.length > 0 && (
         <div className="edu__item">
-          <h3 className="job__title">Volunteer Work</h3>
+          <h3 className="job__title">{t.volunteerWork}</h3>
           <ul className="bullets">
             {volunteer.map((v) => <li key={v.description}>{v.description} ({v.year})</li>)}
           </ul>
@@ -146,12 +148,13 @@ export function Education({ education, volunteer }) {
 }
 
 export function Portfolio({ projects }) {
+  const { t } = useI18n();
   return (
     <div className="portfolio">
       {projects.map((p) => (
         <article key={p.title} className={`card ${p.highlights?.length ? 'card--wide' : ''}`}>
           <h3 className="card__title">{p.title}</h3>
-          {p.client && <p className="card__client">Client: {p.client}</p>}
+          {p.client && <p className="card__client">{t.client}: {p.client}</p>}
           <p className="card__desc">{p.description}</p>
           {p.highlights?.length > 0 && (
             <ul className="bullets card__bullets">
@@ -162,21 +165,21 @@ export function Portfolio({ projects }) {
           <div className="card__links">
             {p.url && (
               <a href={p.url} target="_blank" rel="noreferrer" className="link-btn">
-                Live demo <ExternalIcon />
+                {t.liveDemo} <ExternalIcon />
               </a>
             )}
             {p.repo && (
               <a href={p.repo} target="_blank" rel="noreferrer" className="link-btn">
-                <GitHubIcon /> Code
+                <GitHubIcon /> {t.code}
               </a>
             )}
-            {!p.url && !p.repo && <span className="muted small">Private / client project</span>}
+            {!p.url && !p.repo && <span className="muted small">{t.privateProject}</span>}
           </div>
         </article>
       ))}
-      <article className="card card--placeholder" aria-label="More projects coming soon">
+      <article className="card card--placeholder" aria-label={t.moreSoon}>
         <span className="plus">+</span>
-        <p>More projects coming soon</p>
+        <p>{t.moreSoon}</p>
       </article>
   </div>
   );

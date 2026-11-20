@@ -1,14 +1,16 @@
 import { useState } from 'react';
+import { useI18n } from '../i18n/I18nContext.jsx';
 import { GitHubIcon, InstagramIcon, LinkedInIcon, MailIcon, PhoneIcon, XIcon } from './Icons.jsx';
 
 const handleFromUrl = (url) => url.replace(/\/+$/, '').split('/').pop();
 
 export default function Contact({ contact }) {
+  const { t } = useI18n();
   const [copied, setCopied] = useState('');
 
   const items = [
-    { key: 'email', label: 'Email', value: contact.email, href: `mailto:${contact.email}`, icon: <MailIcon />, copy: true },
-    { key: 'phone', label: 'Phone', value: contact.phone, href: `tel:${contact.phone.replace(/\s/g, '')}`, icon: <PhoneIcon />, copy: true },
+    { key: 'email', label: t.email, value: contact.email, href: `mailto:${contact.email}`, icon: <MailIcon />, copy: true },
+    { key: 'phone', label: t.phone, value: contact.phone, href: `tel:${contact.phone.replace(/\s/g, '')}`, icon: <PhoneIcon />, copy: true },
     { key: 'linkedin', label: 'LinkedIn', value: handleFromUrl(contact.linkedin), href: contact.linkedin, icon: <LinkedInIcon /> },
     { key: 'github', label: 'GitHub', value: `@${handleFromUrl(contact.github)}`, href: contact.github, icon: <GitHubIcon /> },
     { key: 'instagram', label: 'Instagram', value: `@${handleFromUrl(contact.instagram)}`, href: contact.instagram, icon: <InstagramIcon /> },
@@ -38,7 +40,7 @@ export default function Contact({ contact }) {
         >
           <span className="contact__icon">{item.icon}</span>
           <span className="contact__text">
-            <span className="contact__label">{copied === item.key ? 'Copied!' : item.label}</span>
+            <span className="contact__label">{copied === item.key ? t.copied : item.label}</span>
             <span className="contact__value">{item.value}</span>
           </span>
         </a>

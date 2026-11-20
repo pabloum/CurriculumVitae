@@ -1,4 +1,4 @@
-// Builds the CV as a PDF entirely in the browser from cv.json and triggers a download.
+// Builds the CV as a PDF entirely in the browser from the CV data (in the selected language) and triggers a download.
 // Nothing is uploaded or stored; jsPDF is loaded on demand so it doesn't weigh down the page.
 
 const PAGE = { w: 210, h: 297, margin: 18 }; // A4, mm
@@ -11,7 +11,7 @@ const COLORS = {
   tagBg: [232, 246, 240],
 };
 
-export async function generateCvPdf(cv) {
+export async function generateCvPdf(cv, labels, lang) {
   const { jsPDF } = await import('jspdf');
   const doc = new jsPDF({ unit: 'mm', format: 'a4' });
   const contentW = PAGE.w - PAGE.margin * 2;
@@ -107,11 +107,11 @@ export async function generateCvPdf(cv) {
   paragraph(contactLine, { size: 8.5, color: COLORS.muted, gap: 2 });
 
   // ---- Summary
-  sectionTitle('Professional Summary');
+  sectionTitle(labels.summary);
   paragraph(profile.summary, { size: 9.5 });
 
   // ---- Skills
-  sectionTitle('Technical Skills');
+  sectionTitle(labels.skills);
   cv.skills.forEach((s) => {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9.5);
@@ -124,11 +124,11 @@ export async function generateCvPdf(cv) {
   });
 
   // ---- Languages
-  sectionTitle('Languages');
+  sectionTitle(labels.languages);
   paragraph(cv.languages.map((l) => `${l.name} — ${l.level}`).join('   ·   '), { size: 9.5 });
 
   // ---- Experience
-  sectionTitle('Professional Experience');
+  sectionTitle(labels.experience);
   const dateRange = (start, end) => (start === end ? start : [start, end].filter(Boolean).join(' – '));
   const rightText = (text, size = 9) => {
     doc.setFont('helvetica', 'normal');
@@ -188,7 +188,7 @@ export async function generateCvPdf(cv) {
         const companyW = doc.getTextWidth(company);
         setColor(COLORS.muted);
         doc.setFontSize(9.5);
-        doc.text(` · Client: ${job.client}`, PAGE.margin + roleW + companyW, y + 4);
+        doc.text(` · ${labels.client}: ${job.client}`, PAGE.margin + roleW + companyW, y + 4);
       }
       rightText(dateRange(job.start, job.end));
       y += 5.5;
@@ -199,7 +199,7 @@ export async function generateCvPdf(cv) {
   });
 
   // ---- Education
-  sectionTitle('Education');
+  sectionTitle(labels.education);
   cv.education.forEach((e, i) => {
     if (i > 0) y += 2.5;
     ensureSpace(14);
@@ -215,7 +215,7 @@ export async function generateCvPdf(cv) {
 
   // ---- Volunteer
   if (cv.volunteer?.length) {
-    sectionTitle('Volunteer Work');
+    sectionTitle(labels.volunteer);
     cv.volunteer.forEach((v) => bullet(`${v.description} (${v.year})`));
   }
 
@@ -229,5 +229,5 @@ export async function generateCvPdf(cv) {
     doc.text(`${profile.name} · ${p}/${pages}`, PAGE.w - PAGE.margin, PAGE.h - 8, { align: 'right' });
   }
 
-  doc.save(`${profile.name.replace(/\s+/g, '_')}_CV.pdf`);
+  doc.save(`${profile.name.replace(/\s+/g, '_')}_CV_${lang.toUpperCase()}.pdf`);
 }

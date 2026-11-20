@@ -12,14 +12,23 @@ npm run build    # production build in dist/
 
 ## Editing the content
 
-All CV content lives in **`src/data/cv.json`**. Edit that file only; the page and the
-generated PDF both read from it.
+The CV is available in English (default), Spanish, German and French. Content lives in one
+file per language:
+
+```
+src/data/cv/en.json   src/data/cv/es.json   src/data/cv/de.json   src/data/cv/fr.json
+```
+
+The page and the generated PDF both read from these files. **When you add or change something,
+update all four files** so every language stays in sync (same structure, translated text).
+Interface text (buttons, section titles, PDF headings) is in `src/i18n/ui.js`.
 
 - **New job** → add an object at the top of `experience` (`role`, `company`, `location`, `start`, `end`, `highlights`, `tech`).
 - **Several roles at one company** → instead of `role` / `highlights` / `tech`, give the entry a
   `positions` list, each with its own `role`, `start`, `end`, `highlights`, `tech` (see Globant).
 - Entries are shown in the order they appear in the file.
-- **New skill** → add to an `items` list in `skills`, or add a new `{ "category", "items" }` group.
+- **New skill** → add to an `items` list in `skills`, or add a new `{ "category", "icon", "items" }` group
+  (`icon` is one of: code, server, cloud, database, layers, check, signal, tool, spark).
 - **New portfolio project** → add to `portfolio`:
   ```json
   { "title": "My App", "description": "…", "tech": ["React"], "url": "https://…", "repo": "https://github.com/…" }
@@ -30,5 +39,5 @@ generated PDF both read from it.
 
 ## PDF download
 
-The "Download CV (PDF)" button builds the PDF in the browser with jsPDF from `cv.json`.
+The "Download CV (PDF)" button builds the PDF in the browser with jsPDF, in the language currently selected.
 Nothing is uploaded or stored. The layout is defined in `src/pdf/generateCvPdf.js`.

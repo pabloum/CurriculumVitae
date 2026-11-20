@@ -27,3 +27,5 @@ Add a button to download the CV as PDF. Dony use the pdf that I already have as 
 Use a collapsible accordeon for the sections. 
 
 I like light green and light blue, try to use them armonically 
+
+I want the application to allow the user to select the desired language. The available options should be: English (default), spanish, german, french.
