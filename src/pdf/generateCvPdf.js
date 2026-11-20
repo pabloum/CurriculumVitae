@@ -129,39 +129,72 @@ export async function generateCvPdf(cv) {
 
   // ---- Experience
   sectionTitle('Professional Experience');
-  // Rough height of a job block, so short jobs aren't split across pages
-  const jobHeight = (job) => {
+  const dateRange = (start, end) => (start === end ? start : [start, end].filter(Boolean).join(' – '));
+  const rightText = (text, size = 9) => {
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(size);
+    setColor(COLORS.muted);
+    doc.text(text, PAGE.w - PAGE.margin, y + 4, { align: 'right' });
+  };
+  // Rough height of a block of bullets + tags, so short jobs aren't split across pages
+  const blockHeight = (highlights) => {
     doc.setFontSize(9.5);
-    const bulletLines = job.highlights.reduce((n, h) => n + doc.splitTextToSize(h, contentW - 5.5).length, 0);
-    return 11 + bulletLines * lineHeight(9.5) + job.highlights.length * 0.6 + 8;
+    const lines = highlights.reduce((n, h) => n + doc.splitTextToSize(h, contentW - 5.5).length, 0);
+    return lines * lineHeight(9.5) + highlights.length * 0.6 + 8;
+  };
+  const highlights = (pos) => {
+    pos.highlights.forEach((h) => bullet(h));
+    y += 0.8;
+    tags(pos.tech);
   };
 
   cv.experience.forEach((job, i) => {
-    ensureSpace(Math.min(jobHeight(job), PAGE.h / 2));
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10.5);
-    setColor(COLORS.text);
-    doc.text(job.role, PAGE.margin, y + 4);
-    const roleW = doc.getTextWidth(job.role);
-    doc.setFont('helvetica', 'normal');
-    setColor(COLORS.accent2);
-    const company = ` · ${job.company}`;
-    doc.text(company, PAGE.margin + roleW, y + 4);
-    if (job.client) {
-      const companyW = doc.getTextWidth(company);
-      setColor(COLORS.muted);
-      doc.setFontSize(9.5);
-      doc.text(` · Client: ${job.client}`, PAGE.margin + roleW + companyW, y + 4);
+    const firstBlock = job.positions ? job.positions[0].highlights : job.highlights;
+    ensureSpace(Math.min(11 + (job.positions ? 6 : 0) + blockHeight(firstBlock), PAGE.h / 2));
+
+    if (job.positions) {
+      // Company header, then each internal position
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10.5);
+      setColor(COLORS.accent2);
+      doc.text(job.company, PAGE.margin, y + 4);
+      rightText(dateRange(job.start, job.end));
+      y += 5.5;
+      paragraph(job.location, { size: 8.5, style: 'italic', color: COLORS.muted, gap: 1.2 });
+      job.positions.forEach((pos, j) => {
+        if (j > 0) {
+          y += 1.5;
+          ensureSpace(Math.min(6 + blockHeight(pos.highlights), PAGE.h / 2));
+        }
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(10);
+        setColor(COLORS.text);
+        doc.text(pos.role, PAGE.margin, y + 4);
+        rightText(dateRange(pos.start, pos.end), 8.5);
+        y += 5.5;
+        highlights(pos);
+      });
+    } else {
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10.5);
+      setColor(COLORS.text);
+      doc.text(job.role, PAGE.margin, y + 4);
+      const roleW = doc.getTextWidth(job.role);
+      doc.setFont('helvetica', 'normal');
+      setColor(COLORS.accent2);
+      const company = ` · ${job.company}`;
+      doc.text(company, PAGE.margin + roleW, y + 4);
+      if (job.client) {
+        const companyW = doc.getTextWidth(company);
+        setColor(COLORS.muted);
+        doc.setFontSize(9.5);
+        doc.text(` · Client: ${job.client}`, PAGE.margin + roleW + companyW, y + 4);
+      }
+      rightText(dateRange(job.start, job.end));
+      y += 5.5;
+      paragraph(job.location, { size: 8.5, style: 'italic', color: COLORS.muted, gap: 1 });
+      highlights(job);
     }
-    const dates = job.start === job.end ? job.start : `${job.start} – ${job.end}`;
-    setColor(COLORS.muted);
-    doc.setFontSize(9);
-    doc.text(dates, PAGE.w - PAGE.margin, y + 4, { align: 'right' });
-    y += 5.5;
-    paragraph(job.location, { size: 8.5, style: 'italic', color: COLORS.muted, gap: 1 });
-    job.highlights.forEach((h) => bullet(h));
-    y += 0.8;
-    tags(job.tech);
     if (i < cv.experience.length - 1) y += 2;
   });
 
@@ -174,10 +207,7 @@ export async function generateCvPdf(cv) {
     doc.setFontSize(10.5);
     setColor(COLORS.text);
     doc.text(e.institution, PAGE.margin, y + 4);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9);
-    setColor(COLORS.muted);
-    doc.text([e.start, e.end].filter(Boolean).join(' – '), PAGE.w - PAGE.margin, y + 4, { align: 'right' });
+    rightText(dateRange(e.start, e.end));
     y += 5.5;
     paragraph(e.location, { size: 8.5, style: 'italic', color: COLORS.muted, gap: 1 });
     e.degrees.forEach((d) => bullet(d));

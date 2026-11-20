@@ -50,25 +50,54 @@ export function Skills({ skills }) {
   );
 }
 
+function Highlights({ position }) {
+  return (
+    <>
+      <ul className="bullets">
+        {position.highlights.map((h) => <li key={h}>{h}</li>)}
+      </ul>
+      <Tags items={position.tech} />
+    </>
+  );
+}
+
 export function Experience({ jobs }) {
   return (
     <ol className="timeline">
       {jobs.map((job) => (
-        <li key={`${job.company}-${job.role}-${job.start}`} className="timeline__item">
+        <li key={`${job.company}-${job.start}`} className="timeline__item">
           <div className="timeline__dates">
             <span>{job.start}</span>
             {job.end !== job.start && <span className="muted">{job.end}</span>}
           </div>
           <div className="timeline__body">
-            <h3 className="job__title">
-              {job.role} <span className="job__company">· {job.company}</span>
-              {job.client && <span className="job__client"> · Client: {job.client}</span>}
-            </h3>
-            <p className="meta"><PinIcon /> {job.location}</p>
-            <ul className="bullets">
-              {job.highlights.map((h) => <li key={h}>{h}</li>)}
-            </ul>
-            <Tags items={job.tech} />
+            {job.positions ? (
+              // One company, several internal positions
+              <>
+                <h3 className="job__title job__company-head">{job.company}</h3>
+                <p className="meta"><PinIcon /> {job.location}</p>
+                <ol className="positions">
+                  {job.positions.map((p) => (
+                    <li key={`${p.role}-${p.start}`} className="position">
+                      <div className="position__head">
+                        <h4 className="position__role">{p.role}</h4>
+                        <span className="position__dates">{dateRange(p.start, p.end)}</span>
+                      </div>
+                      <Highlights position={p} />
+                    </li>
+                  ))}
+                </ol>
+              </>
+            ) : (
+              <div className="position">
+                <h3 className="job__title">
+                  {job.role} <span className="job__company">· {job.company}</span>
+                  {job.client && <span className="job__client"> · Client: {job.client}</span>}
+                </h3>
+                <p className="meta"><PinIcon /> {job.location}</p>
+                <Highlights position={job} />
+              </div>
+            )}
           </div>
         </li>
       ))}
@@ -120,9 +149,15 @@ export function Portfolio({ projects }) {
   return (
     <div className="portfolio">
       {projects.map((p) => (
-        <article key={p.title} className="card">
+        <article key={p.title} className={`card ${p.highlights?.length ? 'card--wide' : ''}`}>
           <h3 className="card__title">{p.title}</h3>
+          {p.client && <p className="card__client">Client: {p.client}</p>}
           <p className="card__desc">{p.description}</p>
+          {p.highlights?.length > 0 && (
+            <ul className="bullets card__bullets">
+              {p.highlights.map((h) => <li key={h}>{h}</li>)}
+            </ul>
+          )}
           <Tags items={p.tech} />
           <div className="card__links">
             {p.url && (

@@ -67,19 +67,35 @@
       "tech": ["C#", ".NET Core", "LINQ", "SQL Server", "Azure", "Git", "Claude Code", "GitHub Copilot"]
     },
     {
-      "role": "Semi-Senior .NET Software Engineer",
       "company": "Globant",
       "location": "Medellín, Colombia",
-      "start": "2020",
+      "start": "2018",
       "end": "2024",
-      "highlights": [
-        "Built RESTful APIs and microservices under .NET Core, using Azure Service Bus for service-to-service communication",
-        "Web project: maintained tables and stored procedures in SQL Server; worked on the frontend with React",
-        "IoT project: built .NET 6.0 modules on Docker/Azure IoT Edge; used MQTT (Mosquitto) for communication; implemented Azure Direct Methods for remote camera control; built an image-processing module with Python and Azure Custom Vision",
-        "DataHub project: built AWS Lambda functions to process files from S3, storing data and routing it to multiple API endpoints",
-        "Applied the CQRS pattern and modern CI/CD tooling"
-      ],
-      "tech": ["C#", ".NET Core", "LINQ", "SQL Server", "AWS", "Docker", "Azure DevOps", "Git"]
+      "positions": [
+        {
+          "role": "Semi-Senior .NET Software Engineer",
+          "start": "2020",
+          "end": "2024",
+          "highlights": [
+            "Built RESTful APIs and microservices under .NET Core, using Azure Service Bus for service-to-service communication",
+            "Web project: maintained tables and stored procedures in SQL Server; worked on the frontend with React",
+            "IoT project: built .NET 6.0 modules on Docker/Azure IoT Edge; used MQTT (Mosquitto) for communication; implemented Azure Direct Methods for remote camera control; built an image-processing module with Python and Azure Custom Vision",
+            "DataHub project: built AWS Lambda functions to process files from S3, storing data and routing it to multiple API endpoints",
+            "Applied the CQRS pattern and modern CI/CD tooling"
+          ],
+          "tech": ["C#", ".NET Core", "LINQ", "SQL Server", "AWS", "Docker", "Azure DevOps", "Git"]
+        },
+        {
+          "role": "Junior Advanced C++ Developer",
+          "start": "2018",
+          "end": "2020",
+          "highlights": [
+            "Developed cross-platform Video-on-Demand (VOD) applications for major US media clients",
+            "Used C++11 and the Signal/Slot pattern for concurrent programming across Xbox, PS4, Roku, Fire TV, Apple TV, iOS, and Android"
+          ],
+          "tech": ["C++11", "OOP", "Multithreading"]
+        }
+      ]
     },
     {
       "role": "Node.js Developer",
@@ -94,16 +110,16 @@
       "tech": ["Node.js", "Hapi.js", "MongoDB", "Git"]
     },
     {
-      "role": "Junior Advanced C++ Developer",
-      "company": "Globant",
-      "location": "Medellín, Colombia",
-      "start": "2018",
-      "end": "2020",
+      "role": "Intern",
+      "company": "Renault-Sofasa",
+      "location": "Envigado, Colombia",
+      "start": "2017",
+      "end": "2017",
       "highlights": [
-        "Developed cross-platform Video-on-Demand (VOD) applications for major US media clients",
-        "Used C++11 and the Signal/Slot pattern for concurrent programming across Xbox, PS4, Roku, Fire TV, Apple TV, iOS, and Android"
+        "Communicated in French in a professional work environment",
+        "Automated spreadsheets in Excel"
       ],
-      "tech": ["C++11", "OOP", "Multithreading"]
+      "tech": ["Excel", "French"]
     }
   ],
 
@@ -133,6 +149,31 @@
 
   "portfolio": [
     {
+      "title": "Building Reconstruction Pricing Platform",
+      "client": "CoreLogic / Cotality",
+      "description": "Application that calculates the reconstruction cost of buildings based on their features and materials. Supported both the legacy .NET Framework 4.8 version and the newer .NET 8 version, with a React frontend.",
+      "highlights": [
+        "Implemented multi-factor authentication (MFA) login",
+        "Kept material prices up to date in the database by running update scripts",
+        "Added logic to the service that stores business rules",
+        "Supported SOAP and REST APIs"
+      ],
+      "tech": ["React", ".NET 8", ".NET Framework 4.8", "SOAP", "REST APIs", "MFA"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "Cruise Ship Microservices Platform",
+      "description": "Microservices architecture powering the apps and services available to passengers on board a cruise ship: nightly events, food menus, dining times, casinos and more.",
+      "highlights": [
+        "Worked on the casino team, building and maintaining its services",
+        "Services across the ship were interconnected through asynchronous messaging"
+      ],
+      "tech": ["Microservices", "Asynchronous Messaging"],
+      "url": "",
+      "repo": ""
+    },
+    {
       "title": "Claude Cert Prep",
       "description": "Exam preparation web app for the Claude certification.",
       "tech": ["Web App", "Vercel"],
@@ -140,7 +181,8 @@
       "repo": ""
     },
     {
-      "title": "IoT Platform for HM Electronics",
+      "title": "IoT Edge Platform",
+      "client": "HM Electronics",
       "description": ".NET 6.0 modules on Azure IoT Edge with MQTT messaging and remote camera control.",
       "tech": [".NET Core", "NUnit", "MQTT", "Azure"],
       "url": "",
@@ -154,9 +196,31 @@
       "repo": ""
     },
     {
-      "title": "NFL TV App",
+      "title": "Multiplatform Streaming TV App",
+      "client": "NFL",
       "description": "Multiplatform streaming app for live games, replays and video on demand on Xbox, PS4, Roku, Fire TV, Apple TV, iOS and Android.",
       "tech": ["C++11", "Objective-C", "Java", "You.i Engine One"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "RESTful API & Data Layer",
+      "description": "Developed and supported a RESTful back-end service in .NET, creating and maintaining the SQL Server tables and stored procedures behind it.",
+      "tech": [".NET Core", "C#", "SQL Server", "Stored Procedures"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "RESTful API Development & Support",
+      "description": "Built new endpoints and provided production support for a RESTful back-end service in .NET backed by SQL Server.",
+      "tech": [".NET Core", "C#", "SQL Server", "REST APIs"],
+      "url": "",
+      "repo": ""
+    },
+    {
+      "title": "Hotel Booking API",
+      "description": "RESTful back-end service for booking hotel reservations, built with Node.js and Hapi.js on top of MongoDB.",
+      "tech": ["Node.js", "Hapi.js", "MongoDB"],
       "url": "",
       "repo": ""
     }
