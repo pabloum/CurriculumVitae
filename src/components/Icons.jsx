@@ -38,3 +38,32 @@ export const InstagramIcon = () => (
 export const XIcon = () => (
   <svg {...base} fill="currentColor"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z" /></svg>
 );
+
+// Skill category icons
+export const CodeIcon = () => (
+  <svg {...stroke}><path d="M16 18l6-6-6-6M8 6l-6 6 6 6" /></svg>
+);
+export const ServerIcon = () => (
+  <svg {...stroke}><rect x="2" y="3" width="20" height="8" rx="2" /><rect x="2" y="13" width="20" height="8" rx="2" /><path d="M6 7h.01M6 17h.01" /></svg>
+);
+export const CloudIcon = () => (
+  <svg {...stroke}><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" /></svg>
+);
+export const DatabaseIcon = () => (
+  <svg {...stroke}><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>
+);
+export const LayersIcon = () => (
+  <svg {...stroke}><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+);
+export const CheckIcon = () => (
+  <svg {...stroke}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><path d="M22 4L12 14.01l-3-3" /></svg>
+);
+export const SignalIcon = () => (
+  <svg {...stroke}><circle cx="12" cy="12" r="2" /><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.24a6 6 0 0 1 0-8.49M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14" /></svg>
+);
+export const ToolIcon = () => (
+  <svg {...stroke}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>
+);
+export const SparkIcon = () => (
+  <svg {...stroke}><path d="M12 3l1.9 5.8L20 10.7l-5.1 2.4L12 19l-2.9-5.9L4 10.7l6.1-1.9L12 3z" /></svg>
+);

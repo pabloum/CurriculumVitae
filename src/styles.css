@@ -285,15 +285,45 @@ svg { flex-shrink: 0; }
 }
 
 /* Skills */
-.skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
-.skills__group {
-  padding: 14px 16px;
-  border-radius: 12px;
-  background: var(--surface-2);
+.skills { list-style: none; margin: 0; padding: 0; }
+.skills__row {
+  --accent: var(--green-strong);
+  --accent-soft: var(--tag-bg);
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+.skills__row:first-child { border-top: 0; padding-top: 4px; }
+.skills__row--blue { --accent: var(--blue-strong); --accent-soft: color-mix(in srgb, var(--blue) 18%, transparent); }
+.skills__head { display: flex; align-items: center; gap: 12px; padding-top: 2px; }
+.skills__icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--accent-soft);
+  color: var(--accent);
   transition: transform 0.2s ease;
 }
-.skills__group:hover { transform: translateY(-2px); }
-.skills__cat { font-size: 0.85rem; font-weight: 600; color: var(--blue-strong); text-transform: uppercase; letter-spacing: 0.04em; }
+.skills__icon svg { width: 17px; height: 17px; }
+.skills__row:hover .skills__icon { transform: scale(1.08); }
+.skills__cat { font-size: 0.95rem; font-weight: 600; line-height: 1.3; }
+.skills__chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chip-skill {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.chip-skill:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
 
 /* Languages */
 .langs { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
@@ -391,6 +421,7 @@ svg { flex-shrink: 0; }
   .timeline__item { grid-template-columns: 1fr; gap: 6px; }
   .timeline__dates { flex-direction: row; gap: 8px; }
   .timeline__dates .muted::before { content: '– '; }
+  .skills__row { grid-template-columns: 1fr; gap: 10px; }
   .acc__trigger { padding: 16px; }
   .acc__content { padding: 4px 16px 20px; }
   .chip--plain { margin-left: 0; }

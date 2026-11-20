@@ -1,4 +1,7 @@
-import { ExternalIcon, GitHubIcon, PinIcon } from './Icons.jsx';
+import {
+  CheckIcon, CloudIcon, CodeIcon, DatabaseIcon, ExternalIcon, GitHubIcon, LayersIcon,
+  PinIcon, ServerIcon, SignalIcon, SparkIcon, ToolIcon,
+} from './Icons.jsx';
 
 const dateRange = (start, end) => [start, end].filter(Boolean).join(' – ');
 
@@ -12,16 +15,38 @@ export function Summary({ text }) {
   return <p className="summary">{text}</p>;
 }
 
+// Icon per skill category (matched by keyword so renamed categories still get one)
+const SKILL_ICONS = [
+  [/language/i, CodeIcon],
+  [/backend|api/i, ServerIcon],
+  [/cloud|devops/i, CloudIcon],
+  [/database|data/i, DatabaseIcon],
+  [/architecture|pattern/i, LayersIcon],
+  [/test|qa/i, CheckIcon],
+  [/iot|messaging/i, SignalIcon],
+  [/\bai\b|ai-/i, SparkIcon],
+  [/tool/i, ToolIcon],
+];
+const skillIcon = (category) => (SKILL_ICONS.find(([re]) => re.test(category))?.[1] ?? CodeIcon);
+
 export function Skills({ skills }) {
   return (
-    <div className="skills">
-      {skills.map((group) => (
-        <div key={group.category} className="skills__group">
-          <h3 className="skills__cat">{group.category}</h3>
-          <Tags items={group.items} />
-        </div>
-      ))}
-    </div>
+    <ul className="skills">
+      {skills.map((group, i) => {
+        const Icon = skillIcon(group.category);
+        return (
+          <li key={group.category} className={`skills__row ${i % 2 ? 'skills__row--blue' : ''}`}>
+            <div className="skills__head">
+              <span className="skills__icon"><Icon /></span>
+              <h3 className="skills__cat">{group.category}</h3>
+            </div>
+            <ul className="skills__chips">
+              {group.items.map((t) => <li key={t} className="chip-skill">{t}</li>)}
+            </ul>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
