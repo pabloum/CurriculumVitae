@@ -65,43 +65,35 @@ export function Experience({ jobs }) {
   const { t } = useI18n();
   return (
     <ol className="timeline">
-      {jobs.map((job) => (
-        <li key={`${job.company}-${job.start}`} className="timeline__item">
-          <div className="timeline__dates">
-            <span>{job.start}</span>
-            {job.end !== job.start && <span className="muted">{job.end}</span>}
-          </div>
-          <div className="timeline__body">
-            {job.positions ? (
-              // One company, several internal positions
-              <>
-                <h3 className="job__title job__company-head">{job.company}</h3>
-                <p className="meta"><PinIcon /> {job.location}</p>
-                <ol className="positions">
-                  {job.positions.map((p) => (
-                    <li key={`${p.role}-${p.start}`} className="position">
-                      <div className="position__head">
-                        <h4 className="position__role">{p.role}</h4>
-                        <span className="position__dates">{dateRange(p.start, p.end)}</span>
-                      </div>
-                      <Highlights position={p} />
-                    </li>
-                  ))}
-                </ol>
-              </>
-            ) : (
-              <div className="position">
-                <h3 className="job__title">
-                  {job.role} <span className="job__company">· {job.company}</span>
-                  {job.client && <span className="job__client"> · {t.client}: {job.client}</span>}
-                </h3>
-                <p className="meta"><PinIcon /> {job.location}</p>
-                <Highlights position={job} />
-              </div>
-            )}
-          </div>
-        </li>
-      ))}
+      {jobs.map((job) => {
+        // Every company shows the same way: name, location, then one card per position
+        const positions = job.positions ?? [job];
+        const multiple = positions.length > 1;
+        return (
+          <li key={`${job.company}-${job.start}`} className="timeline__item">
+            <div className="timeline__dates">
+              <span>{job.start}</span>
+              {job.end !== job.start && <span className="muted">{job.end}</span>}
+            </div>
+            <div className="timeline__body">
+              <h3 className="job__title job__company-head">{job.company}</h3>
+              <p className="meta"><PinIcon /> {job.location}</p>
+              <ol className="positions">
+                {positions.map((p) => (
+                  <li key={`${p.role}-${p.start}`} className="position">
+                    <div className="position__head">
+                      <h4 className="position__role">{p.role}</h4>
+                      {multiple && <span className="position__dates">{dateRange(p.start, p.end)}</span>}
+                    </div>
+                    {p.client && <p className="position__client">{t.client}: {p.client}</p>}
+                    <Highlights position={p} />
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </li>
+        );
+      })}
     </ol>
   );
 }

@@ -149,52 +149,33 @@ export async function generateCvPdf(cv, labels, lang) {
   };
 
   cv.experience.forEach((job, i) => {
-    const firstBlock = job.positions ? job.positions[0].highlights : job.highlights;
-    ensureSpace(Math.min(11 + (job.positions ? 6 : 0) + blockHeight(firstBlock), PAGE.h / 2));
+    // Every company: name + dates, location, then each position (same layout as the web page)
+    const positions = job.positions ?? [job];
+    const multiple = positions.length > 1;
+    ensureSpace(Math.min(17 + blockHeight(positions[0].highlights), PAGE.h / 2));
 
-    if (job.positions) {
-      // Company header, then each internal position
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(10.5);
-      setColor(COLORS.accent2);
-      doc.text(job.company, PAGE.margin, y + 4);
-      rightText(dateRange(job.start, job.end));
-      y += 5.5;
-      paragraph(job.location, { size: 8.5, style: 'italic', color: COLORS.muted, gap: 1.2 });
-      job.positions.forEach((pos, j) => {
-        if (j > 0) {
-          y += 1.5;
-          ensureSpace(Math.min(6 + blockHeight(pos.highlights), PAGE.h / 2));
-        }
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(10);
-        setColor(COLORS.text);
-        doc.text(pos.role, PAGE.margin, y + 4);
-        rightText(dateRange(pos.start, pos.end), 8.5);
-        y += 5.5;
-        highlights(pos);
-      });
-    } else {
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(10.5);
-      setColor(COLORS.text);
-      doc.text(job.role, PAGE.margin, y + 4);
-      const roleW = doc.getTextWidth(job.role);
-      doc.setFont('helvetica', 'normal');
-      setColor(COLORS.accent2);
-      const company = ` · ${job.company}`;
-      doc.text(company, PAGE.margin + roleW, y + 4);
-      if (job.client) {
-        const companyW = doc.getTextWidth(company);
-        setColor(COLORS.muted);
-        doc.setFontSize(9.5);
-        doc.text(` · ${labels.client}: ${job.client}`, PAGE.margin + roleW + companyW, y + 4);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10.5);
+    setColor(COLORS.accent2);
+    doc.text(job.company, PAGE.margin, y + 4);
+    rightText(dateRange(job.start, job.end));
+    y += 5.5;
+    paragraph(job.location, { size: 8.5, style: 'italic', color: COLORS.muted, gap: 1.2 });
+
+    positions.forEach((pos, j) => {
+      if (j > 0) {
+        y += 1.5;
+        ensureSpace(Math.min(6 + blockHeight(pos.highlights), PAGE.h / 2));
       }
-      rightText(dateRange(job.start, job.end));
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10);
+      setColor(COLORS.text);
+      doc.text(pos.role, PAGE.margin, y + 4);
+      if (multiple) rightText(dateRange(pos.start, pos.end), 8.5);
       y += 5.5;
-      paragraph(job.location, { size: 8.5, style: 'italic', color: COLORS.muted, gap: 1 });
-      highlights(job);
-    }
+      if (pos.client) paragraph(`${labels.client}: ${pos.client}`, { size: 8.5, style: 'bold', color: COLORS.accent2, gap: 0.8 });
+      highlights(pos);
+    });
     if (i < cv.experience.length - 1) y += 2;
   });
 
